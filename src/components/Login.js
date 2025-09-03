@@ -3,11 +3,13 @@ import { useState, useRef} from "react";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 const Login=()=>{
     const [signType,setSignType]=useState(true);
     const [errorMessage,setErrorMessage]=useState(null);
     const email=useRef("");
     const password=useRef("");
+    const navigate=useNavigate();
     const toggleSignInForm=()=>{
         setSignType(!signType);
     }
@@ -21,6 +23,8 @@ const Login=()=>{
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value).then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
+            // Redirecting it to /browse
+            navigate("/browse");
             console.log("Logged In:",user);
             })
             .catch((error) => {
@@ -34,6 +38,8 @@ const Login=()=>{
             //Sign In Logic
             signInWithEmailAndPassword(auth, email.current.value, password.current.value).then((userCredential) => {
             const user = userCredential.user;
+            // Redirecting it to /browse
+            navigate("/browse");
             console.log("Logged In:",user);
             // ...
             })

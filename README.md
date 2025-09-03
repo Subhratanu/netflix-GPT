@@ -13,6 +13,16 @@
     -- firebase init
     -- firebase deploy
 - Create Signup user account 
+- Redux 
+    - npm i @reduxjs/toolkit
+    - npm i react-redux
+    - create store.js in utils
+    - Config store
+    - create slice in userSlice.js
+    - Wrap App.js under <Provider>
+    - Dispatch for Action Dispatch
+    - Subscribe for Read Redux data
+    
 
 # Features
 
